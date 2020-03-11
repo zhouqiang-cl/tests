@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"flag"
 	"database/sql"
+	"context"
 
 	"github.com/zhouqiang-cl/tests/tests/largetxn"
 
@@ -29,6 +30,6 @@ func main() {
 	if err != nil {
 		fmt.Println("create mysql conn failed")
 	}
-
-	largetxn.LargeTxn(5000, db)
+	con, _ := db.Conn(context.Background())
+	largetxn.LargeTxn(5000, con)
 }

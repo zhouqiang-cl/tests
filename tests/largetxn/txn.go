@@ -8,10 +8,9 @@ import (
 )
 
 // LargeTxn is for large transaction
-func LargeTxn(cnt int, db *sql.DB) error {
+func LargeTxn(cnt int, conn *sql.Conn) error {
 	fmt.Println("run large txn DML")
 
-	conn, err := db.Conn(context.Background())
 
 	tx, err := conn.BeginTx(context.Background(), nil)
 	if err != nil {
