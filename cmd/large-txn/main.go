@@ -28,7 +28,7 @@ func main() {
 
 	db, err := sql.Open("mysql", conn.dsn)
 	if err != nil {
-		fmt.Println("create mysql conn failed")
+		fmt.Println("create mysql conn failed+%v", err)
 	}
 	con, _ := db.Conn(context.Background())
 	largetxn.LargeTxn(5000, con)
