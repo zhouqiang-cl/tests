@@ -35,5 +35,8 @@ func main() {
 		fmt.Println(" create conn error +%v", err)
 	}
 
-	largetxn.LargeTxn(5000, con)
+	err = largetxn.LargeTxn(5000, con)
+	if err != nil {
+		fmt.Println(" create conn error +%v", err)
+	}
 }
