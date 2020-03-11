@@ -20,7 +20,7 @@ func main() {
 		dsn string
 	}
 
-	flag.StringVar(&conn.host, "H", "127.0.0.1", "host addr")
+	flag.StringVar(&conn.host, "H", "", "host addr")
 	flag.IntVar(&conn.port, "P", 4000, "port of TiDB")
 	flag.StringVar(&conn.db, "B", "test", "The test database")
 
@@ -30,6 +30,10 @@ func main() {
 	if err != nil {
 		fmt.Println("create mysql conn failed+%v", err)
 	}
-	con, _ := db.Conn(context.Background())
+	con, err := db.Conn(context.Background())
+	if err != nil {
+		fmt.Println(" create conn error +%v", err)
+	}
+
 	largetxn.LargeTxn(5000, con)
 }
