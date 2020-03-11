@@ -7,7 +7,7 @@ import (
 	"context"
 
 	"github.com/zhouqiang-cl/tests/tests/largetxn"
-
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
